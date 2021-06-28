@@ -27,4 +27,11 @@ export const estilo = StyleSheet.create({
         alignSelf: 'center',
         textTransform: 'uppercase',
     },
+    keyboardAvoidingView: {
+        flex: 1,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+    },
 });

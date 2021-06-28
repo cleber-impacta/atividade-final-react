@@ -54,8 +54,6 @@ export default function Cadastro({ navigation }: any) {
             return;
         }
 
-        
-
         user.name = name;
 
         try {
@@ -68,8 +66,10 @@ export default function Cadastro({ navigation }: any) {
                 );
             }
 
-            if (user.age < 1) {
-                Alert.alert('Idade inválida', 'Informe uma idade válida');
+            if (user.age < 18) {
+                Alert.alert(
+                    'Idade inválida', 
+                    'Usuário deve ter no mínimo 18 anos.');
                 return;
             }
         } catch (error) {
@@ -108,9 +108,7 @@ export default function Cadastro({ navigation }: any) {
     }
 
     return (
-
-        <ScrollView>
-            <KeyboardAvoidingView behavior="padding" enabled>
+            <KeyboardAvoidingView style={estilo.keyboardAvoidingView}>
                 <View style={estilo.container}>
                     <Input label="Nome Completo" value={name} onChange={setName} />
                     <Input
@@ -148,6 +146,5 @@ export default function Cadastro({ navigation }: any) {
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
-        </ScrollView>
     );
 }

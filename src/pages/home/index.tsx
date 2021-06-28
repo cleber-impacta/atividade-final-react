@@ -6,13 +6,14 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     Alert,
+    KeyboardAvoidingView,
 } from 'react-native';
 
 import { estilo } from './estilo';
 
 import Input from '../../components/Input';
 import { autenticar } from '../../services/api';
-import { validaEmail, validaCampo } from '../../util/validation';
+import { validaCampo } from '../../util/validation';
 
 export default function Home({ navigation }: any) {
     const [email, setEmail] = useState('');
@@ -22,12 +23,8 @@ export default function Home({ navigation }: any) {
     async function login(): Promise<any> {
         setIsLoading(true);
 
-        if (!validaEmail(email)) {
-            if(email.length == 0){
-                Alert.alert('Endereço de e-mail é obrigatório!');
-            } else {
-                Alert.alert('Endereço de e-mail inválido!');
-            }
+        if(email.length == 0){
+            Alert.alert('Endereço de e-mail é obrigatório!');
             setIsLoading(false);
             return;
         }
@@ -72,6 +69,7 @@ export default function Home({ navigation }: any) {
     }
 
     return (
+        <KeyboardAvoidingView style={estilo.keyboardAvoidingView}>
         <View style={estilo.container}>
             <Image
                 style={estilo.logo}
@@ -118,5 +116,6 @@ export default function Home({ navigation }: any) {
                 </View>
             )}
         </View>
+        </KeyboardAvoidingView>
     );
 }
